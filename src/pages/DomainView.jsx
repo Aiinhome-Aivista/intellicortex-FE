@@ -164,11 +164,11 @@ const SPECS = {
         render: (r) => (
           <span
             className={
-              r.oee < 65 ? "text-signal-red" :
-              r.oee < 80 ? "text-signal-amber" : "text-signal-green"
+              (r.oee || 0) < 65 ? "text-signal-red" :
+              (r.oee || 0) < 80 ? "text-signal-amber" : "text-signal-green"
             }
           >
-            {r.oee.toFixed(1)}%
+            {r.oee?.toFixed(1)}%
           </span>
         ),
       },
@@ -338,8 +338,8 @@ const SPECS = {
       {
         key: "risk_score", label: "Risk",
         render: (r) => (
-          <span className={r.risk_score > 0.85 ? "text-signal-red" : "text-signal-amber"}>
-            {r.risk_score.toFixed(2)}
+          <span className={(r.risk_score || 0) > 0.85 ? "text-signal-red" : "text-signal-amber"}>
+            {r.risk_score?.toFixed(2)}
           </span>
         ),
       },
@@ -380,8 +380,8 @@ const SPECS = {
       {
         key: "fraud_score", label: "Fraud",
         render: (r) => (
-          <span className={r.fraud_score > 0.7 ? "text-signal-red" : "text-signal-amber"}>
-            {r.fraud_score.toFixed(2)}
+          <span className={(r.fraud_score || 0) > 0.7 ? "text-signal-red" : "text-signal-amber"}>
+            {r.fraud_score?.toFixed(2)}
           </span>
         ),
       },
@@ -454,8 +454,8 @@ const SPECS = {
       {
         key: "rate_pct", label: "Rate",
         render: (r) => (
-          <span className={r.rate_pct > 20 ? "text-signal-red" : "text-signal-amber"}>
-            {r.rate_pct.toFixed(1)}%
+          <span className={(r.rate_pct || 0) > 20 ? "text-signal-red" : "text-signal-amber"}>
+            {r.rate_pct?.toFixed(1)}%
           </span>
         ),
       },
