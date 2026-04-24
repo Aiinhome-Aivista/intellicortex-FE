@@ -48,11 +48,11 @@ export default function Warehouse() {
                 className={`w-full text-left flex items-center justify-between px-3 py-2 rounded-lg text-sm transition-colors ${
                   selected === v
                     ? "bg-accent/10 text-accent border border-accent/20"
-                    : "text-ink-100 hover:bg-ink-800/60 border border-transparent"
+                    : "text-slate-900 dark:text-ink-100 hover:bg-slate-100 dark:bg-ink-800/60 border border-transparent"
                 }`}
               >
                 <span className="font-display text-[13px]">{v}</span>
-                <span className="text-[11px] text-ink-500 mono">
+                <span className="text-[11px] text-slate-400 dark:text-ink-500 mono">
                   {vertexCounts[v]?.toLocaleString() || 0}
                 </span>
               </button>
@@ -69,10 +69,10 @@ export default function Warehouse() {
             />
           ) : (
             <div className="card p-10 text-center">
-              <div className="font-serif text-xl text-ink-400 mb-2">
+              <div className="font-serif text-xl text-slate-500 dark:text-ink-400 mb-2">
                 Pick an entity type
               </div>
-              <div className="text-sm text-ink-500">
+              <div className="text-sm text-slate-400 dark:text-ink-500">
                 Select an entity on the left to see its relationships.
               </div>
             </div>
@@ -85,8 +85,8 @@ export default function Warehouse() {
                   key={e}
                   className="card p-3 flex items-center justify-between"
                 >
-                  <span className="font-display text-xs text-ink-100">{e}</span>
-                  <span className="text-[11px] text-ink-500 mono">
+                  <span className="font-display text-xs text-slate-900 dark:text-ink-100">{e}</span>
+                  <span className="text-[11px] text-slate-400 dark:text-ink-500 mono">
                     {edgeCounts[e]?.toLocaleString() || 0}
                   </span>
                 </div>
@@ -102,7 +102,7 @@ export default function Warehouse() {
 function EntityDetail({ name, incoming, outgoing }) {
   return (
     <div className="card p-6">
-      <h3 className="font-serif text-3xl font-light text-ink-100 tracking-tightest mb-1">
+      <h3 className="font-serif text-3xl font-light text-slate-900 dark:text-ink-100 tracking-tightest mb-1">
         {name}
       </h3>
       <div className="kpi-label mb-6">Entity type</div>
@@ -111,14 +111,14 @@ function EntityDetail({ name, incoming, outgoing }) {
         <div>
           <div className="kpi-label mb-3">Outgoing edges</div>
           {outgoing.length === 0 ? (
-            <div className="text-sm text-ink-500">No outgoing relationships defined.</div>
+            <div className="text-sm text-slate-400 dark:text-ink-500">No outgoing relationships defined.</div>
           ) : (
             <ul className="space-y-2">
               {outgoing.map((e, i) => (
                 <li key={i} className="text-sm">
                   <Chip tone="accent" className="mr-2">{e.edge_collection}</Chip>
-                  <span className="text-ink-400">→</span>{" "}
-                  <span className="text-ink-100 font-display text-xs">
+                  <span className="text-slate-500 dark:text-ink-400">→</span>{" "}
+                  <span className="text-slate-900 dark:text-ink-100 font-display text-xs">
                     {e.to_vertex_collections.join(", ")}
                   </span>
                 </li>
@@ -129,15 +129,15 @@ function EntityDetail({ name, incoming, outgoing }) {
         <div>
           <div className="kpi-label mb-3">Incoming edges</div>
           {incoming.length === 0 ? (
-            <div className="text-sm text-ink-500">No incoming relationships defined.</div>
+            <div className="text-sm text-slate-400 dark:text-ink-500">No incoming relationships defined.</div>
           ) : (
             <ul className="space-y-2">
               {incoming.map((e, i) => (
                 <li key={i} className="text-sm">
-                  <span className="text-ink-100 font-display text-xs">
+                  <span className="text-slate-900 dark:text-ink-100 font-display text-xs">
                     {e.from_vertex_collections.join(", ")}
                   </span>{" "}
-                  <span className="text-ink-400">→</span>{" "}
+                  <span className="text-slate-500 dark:text-ink-400">→</span>{" "}
                   <Chip tone="ink-700" className="ml-1">{e.edge_collection}</Chip>
                 </li>
               ))}

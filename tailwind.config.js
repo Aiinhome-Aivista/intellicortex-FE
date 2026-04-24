@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+  darkMode: "class",
   content: ["./index.html", "./src/**/*.{js,jsx}"],
   theme: {
     extend: {
@@ -12,6 +13,8 @@ export default {
           600: "#2a2e40",
           500: "#3a3f54",
           400: "#6b7189",
+          300: "#a0a5b8",
+          100: "#d7dae3",
         },
         accent: {
           DEFAULT: "#e8ff4a",  // signal yellow

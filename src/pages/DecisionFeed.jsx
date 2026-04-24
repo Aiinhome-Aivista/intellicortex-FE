@@ -43,7 +43,7 @@ export default function DecisionFeed() {
               className={`text-[11px] font-display uppercase tracking-wider px-3 py-1.5 rounded-full border transition-colors ${
                 filter === a
                   ? "border-accent text-accent bg-accent/10"
-                  : "border-ink-700 text-ink-400 hover:text-ink-100 hover:border-ink-500"
+                  : "border-slate-200 dark:border-ink-700 text-slate-500 dark:text-ink-400 hover:text-slate-900 dark:text-ink-100 hover:border-slate-300 dark:border-ink-500"
               }`}
             >
               {DOMAIN_LABELS[a] || a}
@@ -63,29 +63,29 @@ export default function DecisionFeed() {
               <article key={d._key} className="card p-5">
                 <div className="flex items-center justify-between mb-2.5">
                   <Chip tone="accent">{DOMAIN_LABELS[d.agent] || d.agent}</Chip>
-                  <div className="text-[11px] font-display text-ink-500 uppercase tracking-wider">
+                  <div className="text-[11px] font-display text-slate-400 dark:text-ink-500 uppercase tracking-wider">
                     {timeAgo(d.created_at)} ·{" "}
                     {Math.round((d.confidence || 0) * 100)}% confidence
                   </div>
                 </div>
-                <div className="text-ink-400 text-xs font-display uppercase mb-1.5">
+                <div className="text-slate-500 dark:text-ink-400 text-xs font-display uppercase mb-1.5">
                   Q:
                 </div>
-                <div className="text-ink-100 text-[15px] font-medium mb-3">
+                <div className="text-slate-900 dark:text-ink-100 text-[15px] font-medium mb-3">
                   {d.question}
                 </div>
-                <div className="text-ink-400 text-xs font-display uppercase mb-1.5">
+                <div className="text-slate-500 dark:text-ink-400 text-xs font-display uppercase mb-1.5">
                   Decision:
                 </div>
-                <div className="text-ink-100 text-sm leading-relaxed border-l-2 border-accent/40 pl-3">
+                <div className="text-slate-900 dark:text-ink-100 text-sm leading-relaxed border-l-2 border-accent/40 pl-3">
                   {d.decision}
                 </div>
                 {d.rationale && (
                   <details className="mt-3">
-                    <summary className="text-[11px] font-display uppercase tracking-wider text-ink-500 cursor-pointer hover:text-ink-300">
+                    <summary className="text-[11px] font-display uppercase tracking-wider text-slate-400 dark:text-ink-500 cursor-pointer hover:text-slate-600 dark:text-ink-300">
                       Rationale
                     </summary>
-                    <div className="text-sm text-ink-400 mt-2 leading-relaxed">
+                    <div className="text-sm text-slate-500 dark:text-ink-400 mt-2 leading-relaxed">
                       {d.rationale}
                     </div>
                   </details>

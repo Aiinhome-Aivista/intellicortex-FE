@@ -30,7 +30,7 @@ export default function Home() {
         title={
           <>
             One enterprise. <br />
-            <span className="text-ink-400">One decision system.</span>
+            <span className="text-slate-500 dark:text-ink-400">One decision system.</span>
           </>
         }
         subtitle="Purpose-built agents for supply chain, sales, planning, production, procurement, logistics, finance, BFSI, insurance, risk, and HR — coordinated through shared business knowledge."
@@ -88,13 +88,13 @@ export default function Home() {
                   </Chip>
                 </div>
                 <div className="flex-1 min-w-0">
-                  <div className="text-[11px] font-display uppercase tracking-widest text-ink-500 mb-1">
+                  <div className="text-[11px] font-display uppercase tracking-widest text-slate-400 dark:text-ink-500 mb-1">
                     {timeAgo(d.created_at)} · confidence {(d.confidence * 100).toFixed(0)}%
                   </div>
-                  <div className="text-ink-100 text-[15px] mb-1.5 font-medium line-clamp-1">
+                  <div className="text-slate-900 dark:text-ink-100 text-[15px] mb-1.5 font-medium line-clamp-1">
                     {d.question}
                   </div>
-                  <div className="text-ink-400 text-sm line-clamp-2">{d.decision}</div>
+                  <div className="text-slate-500 dark:text-ink-400 text-sm line-clamp-2">{d.decision}</div>
                 </div>
               </Link>
             ))}
@@ -118,7 +118,7 @@ export default function Home() {
               {
                 key: "link",
                 label: "",
-                render: () => <ArrowRight size={12} className="text-ink-500" />,
+                render: () => <ArrowRight size={12} className="text-slate-400 dark:text-ink-500" />,
               },
             ]}
             rows={Object.entries(counts?.vertices || {})

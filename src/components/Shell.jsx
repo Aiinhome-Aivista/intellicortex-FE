@@ -4,7 +4,7 @@ import {
   Activity, ArrowUpRight, Sparkles,
 } from "lucide-react";
 import { DOMAIN_LABELS } from "../lib/utils.js";
-
+import ThemeToggle from "./ThemeToggle.jsx";
 const nav = [
   { to: "/", label: "Overview", icon: Home },
   { to: "/ask", label: "Ask", icon: MessageSquareCode },
@@ -21,20 +21,22 @@ const domains = [
 
 export default function Shell({ children }) {
   return (
-    <div className="min-h-screen flex text-ink-100 relative z-10">
+    <div className="min-h-screen flex text-slate-900 dark:text-ink-100 relative z-10">
       {/* Sidebar */}
-      <aside className="w-60 shrink-0 border-r border-ink-800 bg-ink-900/40 flex flex-col">
-        <div className="px-5 pt-6 pb-5 border-b border-ink-800">
-          <div className="flex items-center gap-2">
+      <aside className="w-60 shrink-0 border-r border-slate-200 dark:border-ink-800 bg-slate-50/40 dark:bg-ink-900/40 flex flex-col">
+        <div className="px-5 pt-6 pb-5 border-b border-slate-200 dark:border-ink-800">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2">
             <div className="w-7 h-7 rounded-md bg-accent/15 border border-accent/40 grid place-items-center">
               <div className="w-1.5 h-1.5 bg-accent rounded-full pulse-dot" />
             </div>
             <div className="font-display text-[15px] font-semibold tracking-tight">
-              intelli<span className="text-accent">cortex</span>
-              <span className="text-accent">.</span>
+              intelli<span className="text-accent dark:text-accent">cortex</span>
+              <span className="text-accent dark:text-accent">.</span>
             </div>
           </div>
-          <div className="text-[10px] uppercase tracking-[0.2em] text-ink-400 mt-3 font-display">
+          </div>
+          <div className="text-[10px] uppercase tracking-[0.2em] text-slate-500 dark:text-ink-400 mt-3 font-display">
             AI Decision System
           </div>
         </div>
@@ -48,8 +50,8 @@ export default function Shell({ children }) {
               className={({ isActive }) =>
                 `flex items-center gap-2.5 px-3 py-2 rounded-lg text-[13px] transition-colors ${
                   isActive
-                    ? "bg-accent/10 text-accent border border-accent/20"
-                    : "text-ink-400 hover:text-ink-100 hover:bg-ink-800/60 border border-transparent"
+                    ? "bg-accent/20 dark:bg-accent/10 text-slate-900 dark:text-accent border border-accent/40 dark:border-accent/20"
+                    : "text-slate-600 dark:text-ink-400 hover:text-slate-900 dark:hover:text-ink-100 hover:bg-slate-200/60 dark:hover:bg-ink-800/60 border border-transparent"
                 }`
               }
             >
@@ -59,7 +61,7 @@ export default function Shell({ children }) {
           ))}
 
           <div className="pt-5 pb-2 px-3">
-            <div className="text-[10px] uppercase tracking-[0.2em] text-ink-500 font-display">
+            <div className="text-[10px] uppercase tracking-[0.2em] text-slate-500 dark:text-ink-500 font-display">
               Domains
             </div>
           </div>
@@ -70,8 +72,8 @@ export default function Shell({ children }) {
               className={({ isActive }) =>
                 `flex items-center justify-between gap-2.5 px-3 py-1.5 rounded-lg text-[12px] transition-colors ${
                   isActive
-                    ? "text-ink-100 bg-ink-800/80"
-                    : "text-ink-400 hover:text-ink-100 hover:bg-ink-800/60"
+                    ? "text-slate-900 dark:text-ink-100 bg-slate-200 dark:bg-ink-800/80"
+                    : "text-slate-600 dark:text-ink-400 hover:text-slate-900 dark:hover:text-ink-100 hover:bg-slate-200/60 dark:hover:bg-ink-800/60"
                 }`
               }
             >
@@ -81,9 +83,12 @@ export default function Shell({ children }) {
           ))}
         </nav>
 
-        <div className="border-t border-ink-800 px-5 py-3 text-[10px] text-ink-500 font-display uppercase tracking-wider flex items-center gap-2">
-          <Activity size={10} className="text-signal-green" />
-          <span>Connected</span>
+        <div className="border-t border-slate-200 dark:border-ink-800 px-5 py-3 flex items-center justify-between">
+          <div className="text-[10px] text-slate-500 dark:text-ink-500 font-display uppercase tracking-wider flex items-center gap-2">
+            <Activity size={10} className="text-signal-green" />
+            <span>Connected</span>
+          </div>
+          <ThemeToggle />
         </div>
       </aside>
 

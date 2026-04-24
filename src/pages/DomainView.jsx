@@ -9,6 +9,7 @@ import {
   PageHeader, Section, Kpi, Chip, Empty, Spinner, Table,
 } from "../components/Primitives.jsx";
 import { DOMAIN_LABELS, formatNumber, formatPct, toneForPct } from "../lib/utils.js";
+import { useTheme } from "../hooks/useTheme.jsx";
 
 /**
  * Domain specifications.
@@ -478,6 +479,8 @@ export default function DomainView() {
   const [rows, setRows] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const { theme } = useTheme();
+  const isDark = theme === "dark";
 
   const spec = SPECS[domain];
 
@@ -535,23 +538,23 @@ export default function DomainView() {
               <div className="card p-5 h-72">
                 <ResponsiveContainer width="100%" height="100%">
                   <BarChart data={spec.chart(rows)}>
-                    <CartesianGrid stroke="#1f2230" strokeDasharray="3 3" />
+                    <CartesianGrid stroke={isDark ? "#1f2230" : "#e2e8f0"} strokeDasharray="3 3" />
                     <XAxis
                       dataKey="name"
-                      stroke="#6b7189"
+                      stroke={isDark ? "#6b7189" : "#64748b"}
                       tick={{ fontSize: 10, fontFamily: "JetBrains Mono" }}
                     />
                     <YAxis
-                      stroke="#6b7189"
+                      stroke={isDark ? "#6b7189" : "#64748b"}
                       tick={{ fontSize: 10, fontFamily: "JetBrains Mono" }}
                     />
                     <Tooltip
                       contentStyle={{
-                        background: "#0f1117",
-                        border: "1px solid #2a2e40",
+                        background: isDark ? "#0f1117" : "#ffffff",
+                        border: `1px solid ${isDark ? "#2a2e40" : "#e2e8f0"}`,
                         borderRadius: 6,
                       }}
-                      labelStyle={{ color: "#d7dae3" }}
+                      labelStyle={{ color: isDark ? "#d7dae3" : "#0f172a" }}
                     />
                     <Bar dataKey="value">
                       {spec.chart(rows).map((entry, i) => (

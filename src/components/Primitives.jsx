@@ -2,7 +2,7 @@ import { cn } from "../lib/utils.js";
 
 export function PageHeader({ eyebrow, title, subtitle, actions }) {
   return (
-    <header className="px-8 pt-10 pb-6 border-b border-ink-800">
+    <header className="px-8 pt-10 pb-6 border-b border-slate-200 dark:border-ink-800">
       <div className="flex items-start justify-between gap-6">
         <div>
           {eyebrow && (
@@ -10,11 +10,11 @@ export function PageHeader({ eyebrow, title, subtitle, actions }) {
               {eyebrow}
             </div>
           )}
-          <h1 className="font-serif text-[44px] leading-[1.05] tracking-tightest font-light text-ink-100">
+          <h1 className="font-serif text-[44px] leading-[1.05] tracking-tightest font-light text-slate-900 dark:text-ink-100">
             {title}
           </h1>
           {subtitle && (
-            <p className="mt-3 text-[15px] text-ink-400 max-w-2xl">{subtitle}</p>
+            <p className="mt-3 text-[15px] text-slate-500 dark:text-ink-400 max-w-2xl">{subtitle}</p>
           )}
         </div>
         {actions && <div className="pt-2">{actions}</div>}
@@ -27,7 +27,7 @@ export function Section({ title, action, children, className }) {
   return (
     <section className={cn("px-8 py-8", className)}>
       <div className="section-head">
-        <h2 className="font-display text-sm uppercase tracking-[0.18em] text-ink-100">
+        <h2 className="font-display text-sm uppercase tracking-[0.18em] text-slate-900 dark:text-ink-100">
           {title}
         </h2>
         {action}
@@ -37,7 +37,7 @@ export function Section({ title, action, children, className }) {
   );
 }
 
-export function Kpi({ label, value, delta, tone = "text-ink-100" }) {
+export function Kpi({ label, value, delta, tone = "text-slate-900 dark:text-ink-100" }) {
   return (
     <div className="card p-5">
       <div className="kpi-label">{label}</div>
@@ -69,7 +69,7 @@ export function Chip({ children, tone = "ink-700", className }) {
         tone === "green" && "border-signal-green/30 bg-signal-green/10 text-signal-green",
         tone === "blue" && "border-signal-blue/30 bg-signal-blue/10 text-signal-blue",
         tone === "violet" && "border-signal-violet/30 bg-signal-violet/10 text-signal-violet",
-        tone === "ink-700" && "border-ink-700 bg-ink-800/60 text-ink-400",
+        tone === "ink-700" && "border-slate-200 dark:border-ink-700 bg-slate-100 dark:bg-ink-800/60 text-slate-500 dark:text-ink-400",
         className
       )}
     >
@@ -81,15 +81,15 @@ export function Chip({ children, tone = "ink-700", className }) {
 export function Empty({ title = "No data", hint }) {
   return (
     <div className="card p-10 text-center">
-      <div className="text-ink-400 font-display text-sm">{title}</div>
-      {hint && <div className="text-ink-500 text-xs mt-2">{hint}</div>}
+      <div className="text-slate-500 dark:text-ink-400 font-display text-sm">{title}</div>
+      {hint && <div className="text-slate-400 dark:text-ink-500 text-xs mt-2">{hint}</div>}
     </div>
   );
 }
 
 export function Spinner({ label = "Loading" }) {
   return (
-    <div className="flex items-center gap-2 text-ink-400 text-sm font-display">
+    <div className="flex items-center gap-2 text-slate-500 dark:text-ink-400 text-sm font-display">
       <span className="relative flex h-2 w-2">
         <span className="absolute inset-0 rounded-full bg-accent opacity-75 animate-ping" />
         <span className="relative inline-flex rounded-full h-2 w-2 bg-accent" />
@@ -104,12 +104,12 @@ export function Table({ columns, rows, empty }) {
   return (
     <div className="card overflow-hidden">
       <table className="w-full text-sm">
-        <thead className="bg-ink-800/40 border-b border-ink-700">
+        <thead className="bg-slate-50 dark:bg-ink-800/40 border-b border-slate-200 dark:border-ink-700">
           <tr>
             {columns.map((c) => (
               <th
                 key={c.key}
-                className="text-left font-display text-[10px] uppercase tracking-[0.15em] text-ink-400 px-4 py-2.5"
+                className="text-left font-display text-[10px] uppercase tracking-[0.15em] text-slate-500 dark:text-ink-400 px-4 py-2.5"
               >
                 {c.label}
               </th>
@@ -120,10 +120,10 @@ export function Table({ columns, rows, empty }) {
           {rows.map((r, i) => (
             <tr
               key={i}
-              className="border-b border-ink-800 last:border-0 hover:bg-ink-800/30 transition-colors"
+              className="border-b border-slate-200 dark:border-ink-800 last:border-0 hover:bg-slate-50 dark:hover:bg-ink-800/30 transition-colors"
             >
               {columns.map((c) => (
-                <td key={c.key} className="px-4 py-2.5 text-ink-100">
+                <td key={c.key} className="px-4 py-2.5 text-slate-900 dark:text-ink-100">
                   {c.render ? c.render(r) : r[c.key] ?? "—"}
                 </td>
               ))}

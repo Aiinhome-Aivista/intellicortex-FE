@@ -64,7 +64,7 @@ export default function GraphExplorer() {
             <div className="relative flex-1">
               <Search
                 size={14}
-                className="absolute left-3 top-1/2 -translate-y-1/2 text-ink-500"
+                className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 dark:text-ink-500"
               />
               <input
                 className="input pl-9 mono"
@@ -100,7 +100,7 @@ export default function GraphExplorer() {
             ].map((ex) => (
               <button
                 key={ex}
-                className="text-xs text-ink-400 hover:text-ink-100 px-3 py-1.5 rounded-full border border-ink-700 hover:border-ink-500 transition-colors mono"
+                className="text-xs text-slate-500 dark:text-ink-400 hover:text-slate-900 dark:text-ink-100 px-3 py-1.5 rounded-full border border-slate-200 dark:border-ink-700 hover:border-slate-300 dark:border-ink-500 transition-colors mono"
                 onClick={() => setEntityId(ex)}
               >
                 {ex}
@@ -132,7 +132,7 @@ export default function GraphExplorer() {
                 {walk.slice(0, 80).map((n, i) => (
                   <li
                     key={i}
-                    className="p-2.5 rounded border border-ink-800 hover:border-ink-600 transition-colors"
+                    className="p-2.5 rounded border border-slate-200 dark:border-ink-800 hover:border-slate-300 dark:border-ink-600 transition-colors"
                   >
                     <div className="flex items-center justify-between mb-1">
                       <span
@@ -143,8 +143,8 @@ export default function GraphExplorer() {
                       </span>
                       <Chip tone="ink-700">{n.edge_type}</Chip>
                     </div>
-                    <div className="text-sm text-ink-100 truncate">{n.name || n.node_id}</div>
-                    <div className="mono text-[11px] text-ink-500 truncate">{n.node_id}</div>
+                    <div className="text-sm text-slate-900 dark:text-ink-100 truncate">{n.name || n.node_id}</div>
+                    <div className="mono text-[11px] text-slate-400 dark:text-ink-500 truncate">{n.node_id}</div>
                   </li>
                 ))}
               </ul>

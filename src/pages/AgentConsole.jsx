@@ -82,7 +82,7 @@ export default function AgentConsole() {
             }}
           />
           <div className="flex items-center justify-between mt-3">
-            <div className="text-xs text-ink-500 font-display">
+            <div className="text-xs text-slate-400 dark:text-ink-500 font-display">
               ⌘/Ctrl + Enter to ask
             </div>
             <div className="flex gap-2">
@@ -102,13 +102,13 @@ export default function AgentConsole() {
             </div>
           </div>
 
-          <div className="mt-4 pt-4 border-t border-ink-800">
+          <div className="mt-4 pt-4 border-t border-slate-200 dark:border-ink-800">
             <div className="kpi-label mb-2">Try an example</div>
             <div className="flex flex-wrap gap-2">
               {EXAMPLES.map((ex) => (
                 <button
                   key={ex}
-                  className="text-xs text-ink-400 hover:text-ink-100 px-3 py-1.5 rounded-full border border-ink-700 hover:border-ink-500 transition-colors"
+                  className="text-xs text-slate-500 dark:text-ink-400 hover:text-slate-900 dark:text-ink-100 px-3 py-1.5 rounded-full border border-slate-200 dark:border-ink-700 hover:border-slate-300 dark:border-ink-500 transition-colors"
                   onClick={() => setQuestion(ex)}
                 >
                   {ex}
@@ -131,7 +131,7 @@ export default function AgentConsole() {
               <div className="kpi-label">Routing</div>
               {running && <Spinner label="Agents working…" />}
             </div>
-            <div className="text-[15px] text-ink-100 mb-3">{routing.rationale}</div>
+            <div className="text-[15px] text-slate-900 dark:text-ink-100 mb-3">{routing.rationale}</div>
             <div className="flex flex-wrap gap-2">
               {routing.agents.map((a) => {
                 const done = responses.find((r) => r.agent === a);
@@ -172,24 +172,24 @@ function AgentCard({ response }) {
     <div className="card p-5 space-y-3">
       <div className="flex items-center justify-between">
         <Chip tone={tone}>{DOMAIN_LABELS[response.agent] || response.agent}</Chip>
-        <span className="text-[11px] font-display text-ink-500 uppercase tracking-wider">
+        <span className="text-[11px] font-display text-slate-400 dark:text-ink-500 uppercase tracking-wider">
           {conf.toFixed(0)}% confidence
         </span>
       </div>
-      <div className="text-ink-100 font-medium text-[15px] leading-snug">
+      <div className="text-slate-900 dark:text-ink-100 font-medium text-[15px] leading-snug">
         {response.decision || "—"}
       </div>
       {response.rationale && (
-        <div className="text-ink-400 text-sm leading-relaxed border-l-2 border-ink-700 pl-3">
+        <div className="text-slate-500 dark:text-ink-400 text-sm leading-relaxed border-l-2 border-slate-200 dark:border-ink-700 pl-3">
           {response.rationale}
         </div>
       )}
       {response.actions && response.actions.length > 0 && (
-        <div className="pt-2 border-t border-ink-800">
+        <div className="pt-2 border-t border-slate-200 dark:border-ink-800">
           <div className="kpi-label mb-2">Actions</div>
           <ul className="space-y-1.5">
             {response.actions.map((a, i) => (
-              <li key={i} className="text-[13px] text-ink-100 flex gap-2">
+              <li key={i} className="text-[13px] text-slate-900 dark:text-ink-100 flex gap-2">
                 <span
                   className={cn(
                     "mt-1.5 w-1 h-1 rounded-full shrink-0",
@@ -198,7 +198,7 @@ function AgentCard({ response }) {
                   )}
                 />
                 <span>
-                  <span className="font-display text-[10px] uppercase tracking-wider text-ink-400 mr-2">
+                  <span className="font-display text-[10px] uppercase tracking-wider text-slate-500 dark:text-ink-400 mr-2">
                     {a.type}
                   </span>
                   {JSON.stringify(a.payload || {}).slice(0, 140)}
@@ -220,7 +220,7 @@ function SynthesisCard({ synthesis, decision }) {
           <div className="font-display text-[10px] uppercase tracking-[0.25em] text-accent">
             Enterprise decision
           </div>
-          <h3 className="font-serif text-2xl text-ink-100 font-light mt-1 tracking-tightest">
+          <h3 className="font-serif text-2xl text-slate-900 dark:text-ink-100 font-light mt-1 tracking-tightest">
             Coordinated recommendation
           </h3>
         </div>
@@ -229,14 +229,14 @@ function SynthesisCard({ synthesis, decision }) {
         </Chip>
       </div>
 
-      <div className="text-ink-100 text-[15px] leading-relaxed mb-5">
+      <div className="text-slate-900 dark:text-ink-100 text-[15px] leading-relaxed mb-5">
         {synthesis.enterprise_decision}
       </div>
 
       <div className="grid grid-cols-2 gap-5">
         <div>
           <div className="kpi-label mb-2">Root cause</div>
-          <div className="text-sm text-ink-300 leading-relaxed">{synthesis.root_cause}</div>
+          <div className="text-sm text-slate-600 dark:text-ink-300 leading-relaxed">{synthesis.root_cause}</div>
         </div>
         <div>
           <div className="kpi-label mb-2">Coordinated actions</div>
@@ -246,8 +246,8 @@ function SynthesisCard({ synthesis, decision }) {
                 <Chip tone={a.priority === "high" ? "red" : a.priority === "med" ? "amber" : "ink-700"}>
                   {a.priority}
                 </Chip>
-                <span className="text-ink-100">
-                  <span className="text-ink-400 font-display text-[11px] uppercase mr-1.5">
+                <span className="text-slate-900 dark:text-ink-100">
+                  <span className="text-slate-500 dark:text-ink-400 font-display text-[11px] uppercase mr-1.5">
                     {DOMAIN_LABELS[a.owner] || a.owner}:
                   </span>
                   {a.action}
@@ -259,7 +259,7 @@ function SynthesisCard({ synthesis, decision }) {
       </div>
 
       {synthesis.disagreements && synthesis.disagreements.length > 0 && (
-        <div className="mt-5 pt-4 border-t border-ink-800">
+        <div className="mt-5 pt-4 border-t border-slate-200 dark:border-ink-800">
           <div className="kpi-label mb-2">Disagreements</div>
           <ul className="space-y-1 text-sm text-signal-amber">
             {synthesis.disagreements.map((d, i) => (
@@ -270,7 +270,7 @@ function SynthesisCard({ synthesis, decision }) {
       )}
 
       {decision?._id && (
-        <div className="mt-5 pt-4 border-t border-ink-800 text-[11px] font-display text-ink-500 uppercase tracking-wider">
+        <div className="mt-5 pt-4 border-t border-slate-200 dark:border-ink-800 text-[11px] font-display text-slate-400 dark:text-ink-500 uppercase tracking-wider">
           Persisted: {decision._id}
         </div>
       )}

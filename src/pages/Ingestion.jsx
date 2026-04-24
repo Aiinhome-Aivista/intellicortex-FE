@@ -80,14 +80,14 @@ export default function Ingestion() {
               className="card card-hover p-4 text-left disabled:opacity-50 disabled:cursor-wait"
             >
               <div className="flex items-center justify-between mb-1">
-                <span className="font-display text-[13px] text-ink-100">{v.label}</span>
+                <span className="font-display text-[13px] text-slate-900 dark:text-ink-100">{v.label}</span>
                 {running === v.key ? (
                   <Spinner label="" />
                 ) : (
                   <Zap size={13} className="text-accent opacity-60" />
                 )}
               </div>
-              <div className="text-[11px] text-ink-500 font-display uppercase tracking-wider">
+              <div className="text-[11px] text-slate-400 dark:text-ink-500 font-display uppercase tracking-wider">
                 {v.key === "all" ? "All domains" : "Vertical"}
               </div>
             </button>
@@ -104,7 +104,7 @@ export default function Ingestion() {
                 {result.vertical === "reset" ? "Graph reset" : `Seed complete · ${result.vertical}`}
               </span>
             </div>
-            <pre className="mono text-[11px] leading-relaxed text-ink-300 overflow-x-auto">
+            <pre className="mono text-[11px] leading-relaxed text-slate-600 dark:text-ink-300 overflow-x-auto">
               {JSON.stringify(result.data, null, 2)}
             </pre>
           </div>
@@ -119,7 +119,7 @@ export default function Ingestion() {
               <div className="font-display text-sm text-signal-red uppercase tracking-wider mb-1">
                 Ingestion failed
               </div>
-              <div className="text-sm text-ink-300">{error}</div>
+              <div className="text-sm text-slate-600 dark:text-ink-300">{error}</div>
             </div>
           </div>
         </Section>
@@ -169,16 +169,16 @@ function CsvUpload() {
       <div className="grid grid-cols-3 gap-3">
         <div className="col-span-2">
           <label className="kpi-label block mb-2">CSV file</label>
-          <div className="border border-dashed border-ink-700 rounded-lg p-5 text-center hover:border-accent/40 transition-colors">
-            <UploadCloud size={24} className="mx-auto text-ink-500 mb-2" />
+          <div className="border border-dashed border-slate-200 dark:border-ink-700 rounded-lg p-5 text-center hover:border-accent/40 transition-colors">
+            <UploadCloud size={24} className="mx-auto text-slate-400 dark:text-ink-500 mb-2" />
             <input
               type="file"
               accept=".csv"
               onChange={(e) => setFile(e.target.files?.[0] || null)}
-              className="block w-full text-sm text-ink-400 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-xs file:font-display file:uppercase file:tracking-wider file:bg-accent/10 file:text-accent hover:file:bg-accent/20"
+              className="block w-full text-sm text-slate-500 dark:text-ink-400 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-xs file:font-display file:uppercase file:tracking-wider file:bg-accent/10 file:text-accent hover:file:bg-accent/20"
             />
             {file && (
-              <div className="mt-3 text-xs text-ink-400 mono">
+              <div className="mt-3 text-xs text-slate-500 dark:text-ink-400 mono">
                 {file.name} · {(file.size / 1024).toFixed(1)} KB
               </div>
             )}
@@ -200,14 +200,14 @@ function CsvUpload() {
               <option key={c} value={c}>{c}</option>
             ))}
           </select>
-          <div className="text-[11px] text-ink-500 mt-2 leading-relaxed">
+          <div className="text-[11px] text-slate-400 dark:text-ink-500 mt-2 leading-relaxed">
             First column should be <span className="mono text-accent">key</span> or
             an auto-detected id column (sku, code, id).
           </div>
         </div>
       </div>
       <div className="flex items-center justify-between">
-        <div className="text-xs text-ink-500">
+        <div className="text-xs text-slate-400 dark:text-ink-500">
           All other columns become document fields.
         </div>
         <button className="btn btn-primary" onClick={upload} disabled={!file || busy}>
@@ -264,18 +264,18 @@ function EdgeUpload() {
       <div className="grid grid-cols-3 gap-3">
         <div className="col-span-2">
           <label className="kpi-label block mb-2">Edges CSV</label>
-          <div className="border border-dashed border-ink-700 rounded-lg p-5 text-center">
+          <div className="border border-dashed border-slate-200 dark:border-ink-700 rounded-lg p-5 text-center">
             <input
               type="file"
               accept=".csv"
               onChange={(e) => setFile(e.target.files?.[0] || null)}
-              className="block w-full text-sm text-ink-400 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-xs file:font-display file:uppercase file:tracking-wider file:bg-accent/10 file:text-accent hover:file:bg-accent/20"
+              className="block w-full text-sm text-slate-500 dark:text-ink-400 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-xs file:font-display file:uppercase file:tracking-wider file:bg-accent/10 file:text-accent hover:file:bg-accent/20"
             />
             {file && (
-              <div className="mt-3 text-xs text-ink-400 mono">{file.name}</div>
+              <div className="mt-3 text-xs text-slate-500 dark:text-ink-400 mono">{file.name}</div>
             )}
           </div>
-          <div className="text-[11px] text-ink-500 mt-2 leading-relaxed">
+          <div className="text-[11px] text-slate-400 dark:text-ink-500 mt-2 leading-relaxed">
             Required columns: <span className="mono text-accent">from</span>,
             <span className="mono text-accent"> to</span>. Values must be full graph ids
             like <span className="mono">Product/SKU-1001</span>.
