@@ -3,6 +3,14 @@
 @tailwind utilities;
 
 :root {
+  --color-accent: 37 99 235;
+  --color-accent-dim: 29 78 216;
+  --glow: 0 0 0 1px rgba(37, 99, 235, 0.15), 0 4px 40px -12px rgba(37, 99, 235, 0.35);
+}
+
+html.dark {
+  --color-accent: 232 255 74;
+  --color-accent-dim: 197 215 47;
   --glow: 0 0 0 1px rgba(232, 255, 74, 0.15), 0 4px 40px -12px rgba(232, 255, 74, 0.35);
 }
 
@@ -43,7 +51,7 @@ body::before {
            transition-all duration-200 border;
   }
   .btn-primary {
-    @apply bg-accent text-ink-950 border-accent hover:bg-accent-dim
+    @apply bg-accent text-white dark:text-ink-950 border-accent hover:bg-accent-dim
            hover:border-accent-dim active:scale-[0.98];
   }
   .btn-ghost {

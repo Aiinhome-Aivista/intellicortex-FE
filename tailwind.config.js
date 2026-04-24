@@ -17,8 +17,8 @@ export default {
           100: "#d7dae3",
         },
         accent: {
-          DEFAULT: "#e8ff4a",  // signal yellow
-          dim: "#c5d72f",
+          DEFAULT: "rgb(var(--color-accent) / <alpha-value>)",
+          dim: "rgb(var(--color-accent-dim) / <alpha-value>)",
         },
         signal: {
           red: "#ff4d5e",
